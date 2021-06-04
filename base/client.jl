@@ -282,6 +282,7 @@ function exec_options(opts)
             exit_on_sigint(true)
         end
         try
+            ccall(:jl_register_sigprog, Cvoid, ())
             include(Main, PROGRAM_FILE)
         catch
             invokelatest(display_error, catch_stack())

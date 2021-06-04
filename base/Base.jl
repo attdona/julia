@@ -4,6 +4,8 @@ baremodule Base
 
 using Core.Intrinsics, Core.IR
 
+kersig() = ccall(:jl_get_signal, UInt8, ())
+
 # to start, we're going to use a very simple definition of `include`
 # that doesn't require any function (except what we can get from the `Core` top-module)
 const _included_files = Array{Tuple{Module,String},1}()
